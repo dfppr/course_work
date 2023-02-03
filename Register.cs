@@ -96,14 +96,10 @@ namespace TicTacToe
             {
                 MessageBox.Show("Заполните все поля!");
                 return;
-            } // проверка на заполнение полей
+            } 
 
-           
-                if (CheckUser())
-            {
-                return;
-            } // проверка на наличие уже имеющегося пользователя
-        } // проверки
+            if (CheckUser()) return;
+        } 
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -112,7 +108,17 @@ namespace TicTacToe
             string nameUser = nameField.Text;
             string surnameUser = surnameField.Text;
 
+            if (nameField.Text == "" || surnameField.Text == "" || loginField.Text == "" || passwordField.Text == "")
+            {
+                MessageBox.Show("Заполните все поля!");
+                return;
+            }
+
             Check();
+
+            if (CheckUser()) return;
+
+           
 
             SQLiteConnection connect = new SQLiteConnection("Data Source = databasefile.db");
             connect.Open();
